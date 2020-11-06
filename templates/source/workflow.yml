@@ -34,7 +34,7 @@ jobs:
     - name: Deploy Build Directory via FTP
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
-        ftp-server: {{$__variables__/GITHUB_SECRET_FTP_SERVER}}
-        ftp-username: {{$__variables__/GITHUB_SECRET_FTP_USERNAME}}
-        ftp-password: {{$__variables__/GITHUB_SECRET_FTP_PASSWORD}}
+        ftp-server: {{$__variables__/SECRET_FTP_SERVER}}
+        ftp-username: {{$__variables__/SECRET_FTP_USERNAME}}
+        ftp-password: {{$__variables__/SECRET_FTP_PASSWORD}}
         local-dir: build
