@@ -24,13 +24,15 @@ jobs:
 
 {{@endif}}
     - name: Create Build Directory
-      run: mv source build
+      run: |
+        mkdir -p build
+        cp -a source/. build/
     - name: Rename Public Directory
-      run: mv build/public build/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
+      run: |
+        mv build/public build/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
     - name: List Build Directory Contents
       run: |
-        cd build
-        ls -al
+        ls -al build/
     - name: Deploy Build Directory via FTP
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
