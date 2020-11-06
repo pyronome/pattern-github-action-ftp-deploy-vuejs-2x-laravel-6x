@@ -24,9 +24,7 @@ jobs:
 
 {{@endif}}
     - name: Create Build Directory
-      run: |
-        mkdir -p build
-        cp -R source build
+      run: mv source build
     - name: Rename Public Directory
       run: mv build/public build/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
     - name: List Build Directory Contents
