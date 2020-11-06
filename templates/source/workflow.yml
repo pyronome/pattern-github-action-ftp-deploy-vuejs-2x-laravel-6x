@@ -8,7 +8,7 @@ jobs:
     - name: Copy ENV Laravel Configuration for CI
       run: php -r "file_exists('source/.env.github-actions') || copy('source/.env.github-actions', 'source/.env');"
     - name: Install Composer Dependencies
-      run: composer install -d=source -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      run: composer install -d source -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
     - name: Install NPM Dependencies
       run: |
         cd source
