@@ -12,9 +12,7 @@ Please refer to the [Getting Started](https://github.com/pyronome/pattern-adminl
 
 ## GitHub Actions Used
 
-1. [SamKirkland/FTP-Deploy-Action](https://github.com/marketplace/actions/ftp-deploy): Deploys a GitHub project to a FTP server using GitHub actions.
-2. [nanasess/composer-installer-action](https://github.com/marketplace/actions/composer-installer-action):  Composer installer of Github Actions
-3. [Adzz/yarn_command_action](https://github.com/marketplace/actions/run-a-yarn-or-npm-command): A github action which will run any yarn or npm command in a node alpine container 
+- [SamKirkland/FTP-Deploy-Action](https://github.com/marketplace/actions/ftp-deploy): Deploys a GitHub project to a FTP server using GitHub actions. 
 
 ## Status: Experimental
 
