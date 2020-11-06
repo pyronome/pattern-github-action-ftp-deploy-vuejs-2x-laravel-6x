@@ -19,6 +19,7 @@ jobs:
 {{@if {{$__variables__/LARAVEL_ENV_APP_KEY}} == ''}}
     - name: Generate Laravel Application Key
       run: cd source && php artisan key:generate
+
 {{@endif}}
     - name: Create Build Directory
       run: |
