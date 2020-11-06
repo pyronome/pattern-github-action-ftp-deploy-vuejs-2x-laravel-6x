@@ -1,0 +1,32 @@
+[
+    {
+        "description":".env.github-actions File",
+        "base":"\/project",
+        "enabled":"1",
+        "source":"source\/.env.github-actions",
+        "destination":"\/source\/.env.github-actions",
+        "temporary":"0",
+        "skip_empty":"0",
+        "skip_whitespace":"0",
+        "remove_whitespace":"0",
+        "append":"0",
+        "glue":"",
+        "prepend_crlf":"0",
+        "append_crlf":"0"
+    },
+    {
+        "description":"GitHub Actions Workflow File",
+        "base":"\/project",
+        "enabled":"1",
+        "source":"source\/workflow.yml",
+        "destination":".github/workflows/workflow.yml",
+        "temporary":"0",
+        "skip_empty":"0",
+        "skip_whitespace":"0",
+        "remove_whitespace":"0",
+        "append":"0",
+        "glue":"",
+        "prepend_crlf":"0",
+        "append_crlf":"0"
+    }
+]
