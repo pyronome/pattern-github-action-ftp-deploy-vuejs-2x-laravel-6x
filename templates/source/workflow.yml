@@ -1,18 +1,18 @@
 name: Github Action FTP Deploy for Vue.js 2.x + Laravel 6.x
 on: [push]
 jobs:
-	install-dependencies:
-		runs-on: ubuntu-latest
-		steps:
-		- uses: actions/checkout@v1
-		- name: Copy ENV Laravel Configuration for CI
-			run: php -r "file_exists('source/.env.github-actions') || copy('source/.env.github-actions', 'source/.env');"
-		- name: Install Composer Dependencies
-			run: composer install -d=/source -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-		- name: Install NPM Dependencies
-			run: |
-				cd source
-    			npm install
-    			npm run dev
-		- name: Generate key
-			run: php artisan key:generate
+  install-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Copy ENV Laravel Configuration for CI
+      run: php -r "file_exists('source/.env.github-actions') || copy('source/.env.github-actions', 'source/.env');"
+    - name: Install Composer Dependencies
+      run: composer install -d=/source -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+    - name: Install NPM Dependencies
+      run: |
+        cd source
+        npm install
+        npm run dev
+    - name: Generate key
+      run: php artisan key:generate
