@@ -34,9 +34,10 @@ jobs:
       run: |
         ls -al build/
     - name: Deploy Build Directory via FTP
-      uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      uses: sebastianpopp/ftp-action@releases/v2
       with:
-        ftp-server: {{$__variables__/SECRET_FTP_SERVER}}
-        ftp-username: {{$__variables__/SECRET_FTP_USERNAME}}
-        ftp-password: {{$__variables__/SECRET_FTP_PASSWORD}}
-        local-dir: build
+        host: {{$__variables__/SECRET_FTP_SERVER}}
+        user: {{$__variables__/SECRET_FTP_USERNAME}}
+        password: {{$__variables__/SECRET_FTP_PASSWORD}}
+        localDir: "build"
+        remoteDir: ""
