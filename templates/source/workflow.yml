@@ -13,6 +13,6 @@ jobs:
       run: |
         cd source
         npm install
-        npm run dev
+        npm run prod
     - name: Generate key
-      run: php artisan key:generate
+      run: php source/artisan key:generate
