@@ -1,12 +1,14 @@
-name: {{$__globals__/PYRONOME_PROJECT_TITLE}} Github Action FTP Deploy for Vue.js 2.x + Laravel 6.x
+name: FTP Deploy for {{$__globals__/PYRONOME_PROJECT_TITLE}}
 on: [push]
 jobs:
-  install-dependencies:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Copy ENV Laravel Configuration for CI
-      run: php -r "file_exists('source/.env') || copy('source/.env.github-actions', 'source/.env');"
+      run: |
+        php -r "file_exists('source/.env') || copy('source/.env.github-actions', 'source/.env');"
+        echo "!build/.env" > .git-ftp-include # Add git untracked file
     - name: Install Composer Dependencies
       run: composer install -d source -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
     - name: Install NPM Dependencies
@@ -14,5 +16,20 @@ jobs:
         cd source
         npm install
         npm run prod
-    - name: Generate key
+{{@if {{$__variables__/LARAVEL_ENV_APP_KEY}} == ''}}
+    - name: Generate Laravel Application Key
       run: cd source && php artisan key:generate
+{{@endif}}
+    - name: Create Build Directory
+      run: |
+        mkdir -p build
+        cp -R source build
+    - name: Rename Public Directory
+      run: mv build/public build/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
+    - name: Deploy Files via FTP
+      uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      with:
+        ftp-server: {{$__variables__/GITHUB_SECRET_FTP_SERVER}}
+        ftp-username: {{$__variables__/GITHUB_SECRET_FTP_USERNAME}}
+        ftp-password: {{$__variables__/GITHUB_SECRET_FTP_PASSWORD}}
+        local-dir: build
