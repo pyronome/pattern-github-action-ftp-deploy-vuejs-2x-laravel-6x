@@ -18,7 +18,9 @@ jobs:
         npm run prod
 {{@if {{$__variables__/LARAVEL_ENV_APP_KEY}} == ''}}
     - name: Generate Laravel Application Key
-      run: cd source && php artisan key:generate
+      run: |
+        cd source
+        php artisan key:generate
 
 {{@endif}}
     - name: Create Build Directory
@@ -27,7 +29,11 @@ jobs:
         cp -R source build
     - name: Rename Public Directory
       run: mv build/public build/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
-    - name: Deploy Files via FTP
+    - name: List Build Directory Contents
+      run: |
+        cd build
+        ls -al
+    - name: Deploy Build Directory via FTP
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
         ftp-server: {{$__variables__/GITHUB_SECRET_FTP_SERVER}}
