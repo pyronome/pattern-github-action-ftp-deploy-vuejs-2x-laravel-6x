@@ -16,5 +16,5 @@ jobs:
         npm run prod
     - name: Generate key
       run: |
-				cd source
-				php artisan key:generate
+        cd source
+        php artisan key:generate
