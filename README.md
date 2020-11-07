@@ -4,7 +4,7 @@
 
 **Laravel** is a web application framework with expressive, elegant syntax. For further information about **Laravel** Framework, please visit https://laravel.com/.
 
-This repository contains Pyronome **Github Action FTP Deploy for Vue.js 2.x + Laravel 6.x** pattern basic information, pattern files, pattern templates, documentation and issue tracker. For further information about this pattern, please visit https://pyronome.com/pyronome/github-action-ftp-deploy-vuejs-2x-laravel-6x.
+This repository contains Pyronome **Vue.js 2.x + Laravel 6.x Shared Hosting Installer using Github Actions** pattern basic information, pattern files, pattern templates, documentation and issue tracker. For further information about this pattern, please visit https://pyronome.com/pyronome/github-action-ftp-deploy-vuejs-2x-laravel-6x.
 
 **Please note that you cannot directly use this repository.** To generate source code using this pattern, please visit [Pyronome Sign Up Page](https://pyronome.com/builder/signup), and create an account.
 
@@ -23,12 +23,12 @@ Not available for production environments. The stable version is coming soon.
 
 ## Getting Started
 
-Please follow the steps below to generate source code using **Github Action FTP Deploy for Vue.js 2.x + Laravel 6.x** pattern:
+Please follow the steps below to generate source code using **Vue.js 2.x + Laravel 6.x Shared Hosting Installer using Github Actions** pattern:
 
 1. Visit Pyronome platform website: https://pyronome.com
 2. Sign up / log in to Pyronome. For detailed information and step by step instructions, please visit: https://help.pyronome.com/latest/en/docs/getting-started-signup-and-login/
 3. Create a new Pyronome project. For detailed information and step by step instructions, please visit: https://help.pyronome.com/latest/en/docs/getting-started-your-first-project/
-4. Please choose **Github Action FTP Deploy for Vue.js 2.x + Laravel 6.x** pattern on Install Pattern(s) dialog.
+4. Please choose **Vue.js 2.x + Laravel 6.x Shared Hosting Installer using Github Actions** pattern on Install Pattern(s) dialog.
 5. Generate source code. For detailed information and step by step instructions, please visit: https://help.pyronome.com/latest/en/docs/getting-started-source-code-generation/
 
 ## Contributing
