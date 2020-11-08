@@ -27,7 +27,7 @@ jobs:
         cp -a source/. build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/
         mv build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/public build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
     - name: Compress Build Directory
-    - uses: montudor/action-zip@v0.1.0
+      uses: montudor/action-zip@v0.1.0
       with:
         args: zip -qq -r build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}.zip build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/.
     - name: Create Deploy Directory
