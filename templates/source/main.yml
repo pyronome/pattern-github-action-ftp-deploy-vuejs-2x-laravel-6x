@@ -37,8 +37,11 @@ jobs:
         cp build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}.zip deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__globals__/PYRONOME_PROJECT_NAME}}/builds/
     - name: List Deploy Folder Contents
       run: |
+        echo "Listing deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/ Folder"
         ls -al deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/
+        echo "Listing deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__globals__/PYRONOME_PROJECT_NAME}}/builds/ Folder"
         ls -al deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__globals__/PYRONOME_PROJECT_NAME}}/builds
+        echo "Listing deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}/ Folder"
         ls -al deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
     - name: Deploy Project via FTP
       uses: sebastianpopp/ftp-action@releases/v2
