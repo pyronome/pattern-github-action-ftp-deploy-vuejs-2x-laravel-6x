@@ -32,16 +32,19 @@ jobs:
         args: zip -qq -r build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}.zip build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/.
     - name: Create Deploy Directory
       run: |
-        mkdir -p deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}
-        cp build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}.zip deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/
+        mkdir -p deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__globals__/PYRONOME_PROJECT_NAME}}/builds
+        mkdir -p deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
+        cp build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}.zip deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__globals__/PYRONOME_PROJECT_NAME}}/builds/
     - name: List Deploy Folder Contents
       run: |
         ls -al deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/
-    - name: Deploy Build Directory via FTP
+        ls -al deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__globals__/PYRONOME_PROJECT_NAME}}/builds
+        ls -al deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
+    - name: Deploy Project via FTP
       uses: sebastianpopp/ftp-action@releases/v2
       with:
         host: {{$__variables__/SECRET_FTP_SERVER}}
         user: {{$__variables__/SECRET_FTP_USERNAME}}
         password: {{$__variables__/SECRET_FTP_PASSWORD}}
         localDir: "deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}"
-        remoteDir: "{{$__globals__/PYRONOME_PROJECT_NAME}}/builds"
+        remoteDir: ""
