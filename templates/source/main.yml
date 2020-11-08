@@ -8,10 +8,9 @@ jobs:
     - name: Copy ENV Laravel Configuration for CI
       run: |
         php -r "file_exists('source/.env') || copy('source/.env.github-actions', 'source/.env');"
-    - name: Install Composer Dependencies
-      run: composer install -d source -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-    - name: Install NPM Dependencies
+    - name: Install Composer & NPM Dependencies
       run: |
+        composer install -d source -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
         cd source
         npm install
         npm run prod
@@ -22,13 +21,12 @@ jobs:
         php artisan key:generate
 
 {{@endif}}
-    - name: Create Build Directory
+    - name: Create Build Directory & Rename Public Directory
       run: |
         mkdir -p build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}
         cp -a source/. build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/
-    - name: Rename Public Directory
-      run: |
         mv build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/public build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
+    - name: Compress Build Directory
     - uses: montudor/action-zip@v0.1.0
       with:
         args: zip -qq -r build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}.zip build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/.
