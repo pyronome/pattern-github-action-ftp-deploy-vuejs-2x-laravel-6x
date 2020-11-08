@@ -41,5 +41,5 @@ jobs:
         host: {{$__variables__/SECRET_FTP_SERVER}}
         user: {{$__variables__/SECRET_FTP_USERNAME}}
         password: {{$__variables__/SECRET_FTP_PASSWORD}}
-        localDir: "build/."
+        localDir: "build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}.zip"
         remoteDir: "{{$__globals__/PYRONOME_PROJECT_NAME}}/builds"
