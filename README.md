@@ -12,7 +12,9 @@ Please refer to the [Getting Started](https://github.com/pyronome/pattern-adminl
 
 ## GitHub Actions Used
 
-- [SamKirkland/FTP-Deploy-Action](https://github.com/marketplace/actions/ftp-deploy): Deploys a GitHub project to a FTP server using GitHub actions. 
+1. [actions/checkout](https://github.com/marketplace/actions/checkout): Action for checking out a repo 
+2. [montudor/action-zip](https://github.com/marketplace/actions/create-zip-file): A GitHub action used to zip file contents 
+3. [sebastianpopp/ftp-action](https://github.com/marketplace/actions/ftp-action): Automate copying your files via FTP using this GitHub action.
 
 ## Status: Experimental
 
@@ -20,6 +22,24 @@ Not available for production environments. The stable version is coming soon.
 
 ## Variables
 
+| Variable | Description |
+|---|---|
+|`LARAVEL_ENV_APP_NAME`|   |
+|`LARAVEL_ENV_APP_ENV`|   |
+|`LARAVEL_ENV_APP_KEY`|   |
+|`LARAVEL_ENV_APP_DEBUG`|   |
+|`LARAVEL_ENV_APP_URL`|   |
+|`LARAVEL_ENV_LOG_CHANNEL`|   |
+|`LARAVEL_ENV_DB_CONNECTION`|   |
+|`LARAVEL_ENV_DB_HOST`|   |
+|`LARAVEL_ENV_DB_PORT`|   |
+|`LARAVEL_ENV_DB_DATABASE`|   |
+|`LARAVEL_ENV_DB_USERNAME`|   |
+|`LARAVEL_ENV_DB_PASSWORD`|   |
+|`DEPLOY_PUBLIC_DIRECTORY`|   |
+|`SECRET_FTP_SERVER`|   |
+|`SECRET_FTP_USERNAME`|   |
+|`SECRET_FTP_PASSWORD`|   |
 
 ## Getting Started
 
