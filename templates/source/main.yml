@@ -8,7 +8,6 @@ jobs:
     - name: Copy ENV Laravel Configuration for CI
       run: |
         php -r "file_exists('source/.env') || copy('source/.env.github-actions', 'source/.env');"
-        echo "!build/.env" > .git-ftp-include # Add git untracked file
     - name: Install Composer Dependencies
       run: composer install -d source -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
     - name: Install NPM Dependencies
@@ -30,9 +29,12 @@ jobs:
     - name: Rename Public Directory
       run: |
         mv build/public build/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
-    - name: List Build Directory Contents
+    - uses: montudor/action-zip@v0.1.0
+      with:
+        args: zip -qq -r build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}.zip build/.
+    - name: List Root Folder Contents
       run: |
-        ls -al build/
+        ls -al
     - name: Deploy Build Directory via FTP
       uses: sebastianpopp/ftp-action@releases/v2
       with:
@@ -40,4 +42,4 @@ jobs:
         user: {{$__variables__/SECRET_FTP_USERNAME}}
         password: {{$__variables__/SECRET_FTP_PASSWORD}}
         localDir: "build/."
-        remoteDir: ""
+        remoteDir: "{{$__globals__/PYRONOME_PROJECT_NAME}}/builds"
