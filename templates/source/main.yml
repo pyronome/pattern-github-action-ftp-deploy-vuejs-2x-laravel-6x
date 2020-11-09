@@ -49,5 +49,5 @@ jobs:
         host: {{$__variables__/SECRET_FTP_SERVER}}
         user: {{$__variables__/SECRET_FTP_USERNAME}}
         password: {{$__variables__/SECRET_FTP_PASSWORD}}
-        localDir: "deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}"
-        remoteDir: "./"
+        localDir: "deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/"
+        remoteDir: "/"
