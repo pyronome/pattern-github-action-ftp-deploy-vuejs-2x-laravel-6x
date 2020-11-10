@@ -21,26 +21,26 @@ jobs:
         php artisan key:generate
 
 {{@endif}}
-    - name: Create Build Directory & Rename Public Directory
+    - name: Create Release Directory & Rename Public Directory
       run: |
-        mkdir -p build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}
-        cp -a source/. build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/
-        mv build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/public build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
-    - name: Compress Build Directory
+        mkdir -p release-{{$__globals__/PYRONOME_CURRENT_DATETIME}}
+        cp -a source/. release-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/
+        mv release-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/public release-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
+    - name: Compress Release Directory
       uses: montudor/action-zip@v0.1.0
       with:
-        args: zip -qq -r build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}.zip build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/.
+        args: zip -qq -r release-{{$__globals__/PYRONOME_CURRENT_DATETIME}}.zip release-{{$__globals__/PYRONOME_CURRENT_DATETIME}}/.
     - name: Create Deploy Directory
       run: |
-        mkdir -p deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__globals__/PYRONOME_PROJECT_NAME}}/builds
+        mkdir -p deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__globals__/PYRONOME_PROJECT_NAME}}/releases
         mkdir -p deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
-        cp build-{{$__globals__/PYRONOME_CURRENT_DATETIME}}.zip deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__globals__/PYRONOME_PROJECT_NAME}}/builds/
+        cp release-{{$__globals__/PYRONOME_CURRENT_DATETIME}}.zip deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__globals__/PYRONOME_PROJECT_NAME}}/releases/
     - name: List Deploy Folder Contents
       run: |
         echo "Listing deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/"
         ls -al deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/
-        echo "Listing deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__globals__/PYRONOME_PROJECT_NAME}}/builds/"
-        ls -al deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__globals__/PYRONOME_PROJECT_NAME}}/builds
+        echo "Listing deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__globals__/PYRONOME_PROJECT_NAME}}/releases/"
+        ls -al deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__globals__/PYRONOME_PROJECT_NAME}}/releases
         echo "Listing deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}/"
         ls -al deploy-{{$__globals__/PYRONOME_RANDOM_STRING_16BYTES_LOWERCASE}}/{{$__variables__/DEPLOY_PUBLIC_DIRECTORY}}
     - name: Deploy Project via FTP
